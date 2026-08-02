@@ -1,0 +1,13 @@
+,Data type
+user_id,int64
+age,int64
+gender,object
+date,datetime64[ns]
+steps,int64
+heart_rate_avg,float64
+sleep_hours,float64
+calories_burned,float64
+exercise_minutes,float64
+stress_level,int64
+weight_kg,float64
+bmi,float64
