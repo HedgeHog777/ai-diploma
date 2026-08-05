@@ -1,0 +1,25 @@
+config.py
+        │
+        ▼
+utils.py
+        │
+        ▼
+00_project_setup
+        │
+        ▼
+01_dataset_audit
+        │
+        ▼
+02_eda
+        │
+        ▼
+03_preprocessing
+        │
+        ▼
+04_feature_engineering
+        │
+        ▼
+05_modeling
+        │
+        ▼
+06_evaluation
