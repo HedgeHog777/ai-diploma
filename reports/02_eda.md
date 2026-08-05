@@ -1,18 +1,41 @@
-
 # Exploratory Data Analysis
 
-Numeric features:
-10
+## Dataset
 
-Categorical features:
-2
+- Records: 365,000
+- Features: 12
+
+## Gender distribution
+
+| gender   |   count |
+|:---------|--------:|
+| Жінка    |  186515 |
+| Чоловік  |  178485 |
+
+## Correlation analysis
 
 Strongest positive correlation:
 
-TODO
+- **Середній пульс ↔ Ідентифікатор користувача**
+- Correlation coefficient: **0.020**
 
 Strongest negative correlation:
 
-TODO
+- **Вік ↔ Середній пульс**
+- Correlation coefficient: **-0.155**
 
-EDA completed successfully.
+## Generated files
+
+### Figures
+
+- 02_histograms.png
+- 02_boxplots.png
+- 02_gender_distribution.png
+- 02_correlation_matrix.png
+- 02_exercise_calories.png
+- 02_weight_timeseries.png
+
+### Tables
+
+- 02_gender_distribution.csv
+- 02_correlation_matrix.csv

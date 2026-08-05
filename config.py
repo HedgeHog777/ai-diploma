@@ -18,6 +18,7 @@ PROJECT_DIR = Path("/content/drive/MyDrive/FitnessML_Master")
 # ============================================================
 
 DATA_DIR = PROJECT_DIR / "data"
+
 RAW_DATA_DIR = DATA_DIR / "raw"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
@@ -44,10 +45,27 @@ RANDOM_STATE = 42
 TEST_SIZE = 0.20
 VALIDATION_SIZE = 0.20
 
+# ============================================================
+# VISUALIZATION
+# ============================================================
+
 FIG_DPI = 200
+FIGSIZE = (10, 6)
+
+STYLE = "whitegrid"
+PALETTE = "viridis"
+
+LANGUAGE = "uk"
+
+# ============================================================
+# EXPORT
+# ============================================================
 
 SAVE_TABLES = True
 SAVE_FIGURES = True
+SAVE_REPORTS = True
+
+REPORT_ENCODING = "utf-8"
 
 # ============================================================
 # LOCALIZATION
@@ -61,51 +79,42 @@ COLUMN_LABELS = {
     "gender": "Стать",
     "age": "Вік",
 
-    "height_cm": "Зріст, см",
-    "weight_kg": "Вага, кг",
-    "bmi": "Індекс маси тіла",
-
-    "heart_rate": "Частота серцевих скорочень",
-    "blood_pressure": "Артеріальний тиск",
-
     "steps": "Кількість кроків",
-    "distance_km": "Пройдена відстань, км",
-
+    "heart_rate_avg": "Середній пульс",
+    "sleep_hours": "Тривалість сну (год)",
     "calories_burned": "Спалені калорії",
-    "exercise_minutes": "Фізична активність, хв",
-
-    "sleep_hours": "Тривалість сну, год",
-
+    "exercise_minutes": "Фізична активність (хв)",
     "stress_level": "Рівень стресу",
-
-    "water_intake_liters": "Споживання води, л",
-
-    "daily_calories": "Добова калорійність",
-
-    "activity_level": "Рівень активності",
-
-    "mood": "Настрій"
+    "weight_kg": "Вага (кг)",
+    "bmi": "Індекс маси тіла"
 }
 
 VALUE_LABELS = {
 
-    "Male": "Чоловік",
-    "Female": "Жінка"
+    "M": "Чоловік",
+    "F": "Жінка"
 
 }
+
 # ============================================================
-# CREATE DIRECTORIES
+# CREATE PROJECT DIRECTORIES
 # ============================================================
 
-for directory in [
+DIRECTORIES = [
+
     DATA_DIR,
     RAW_DATA_DIR,
     PROCESSED_DATA_DIR,
+
     FIGURES_DIR,
     TABLES_DIR,
     REPORTS_DIR,
+
     MODELS_DIR,
     THESIS_DIR,
-    NOTEBOOKS_DIR,
-]:
+    NOTEBOOKS_DIR
+
+]
+
+for directory in DIRECTORIES:
     directory.mkdir(parents=True, exist_ok=True)

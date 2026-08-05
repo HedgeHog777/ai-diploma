@@ -2,7 +2,7 @@
 user_id,int64
 age,int64
 gender,object
-date,datetime64[ns]
+date,object
 steps,int64
 heart_rate_avg,float64
 sleep_hours,float64
