@@ -1,0 +1,19 @@
+{
+  "model": "Random Forest — All Features",
+  "target": "target_calories_next_day",
+  "split_date": "2016-05-07",
+  "train_rows": 555,
+  "test_rows": 125,
+  "feature_count": 65,
+  "users_train": 32,
+  "users_test": 27,
+  "MAE": 487.184518141906,
+  "RMSE": 743.4931609096991,
+  "R2": 0.24419428703307278,
+  "n_estimators": 200,
+  "max_depth": 10,
+  "min_samples_leaf": 3,
+  "random_state": 42,
+  "zero_target_observations": 3,
+  "dominant_SHAP_feature": "Calories_rolling_mean_7"
+}
