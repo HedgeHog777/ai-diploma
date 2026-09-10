@@ -1,0 +1,23 @@
+{
+  "model": "Random Forest — All Features",
+  "target": "target_calories_next_day",
+  "split_date": "2016-05-07",
+  "train_rows": 555,
+  "test_rows": 125,
+  "feature_count": 65,
+  "users_train": 32,
+  "users_test": 27,
+  "MAE": 481.7334122956304,
+  "RMSE": 740.4334498547873,
+  "R2": 0.2504022490773986,
+  "n_estimators": 200,
+  "max_depth": 10,
+  "min_samples_leaf": 3,
+  "random_state": 42,
+  "zero_target_observations": 3,
+  "dominant_SHAP_feature": "Calories_rolling_mean_7",
+  "source_notebook": "009_final_results",
+  "ui_model_file": "random_forest_final.pkl",
+  "ui_prediction_file": "prediction_results.csv",
+  "ui_modeling_data_file": "fitbit_modeling_features.csv"
+}

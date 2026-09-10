@@ -1,0 +1,8 @@
+{
+  "model": "Random Forest — All Features",
+  "model_file": "random_forest_final.pkl",
+  "prediction_file": "prediction_results.csv",
+  "modeling_data_file": "fitbit_modeling_features.csv",
+  "metadata_file": "model_metadata.json",
+  "target": "target_calories_next_day"
+}
