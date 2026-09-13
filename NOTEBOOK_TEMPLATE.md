@@ -1,71 +1,112 @@
 # Notebook Template
 
-This document defines the standard structure for every notebook in the FitnessML Master Thesis project.
+This document defines the standard structure and development conventions for notebooks in the FitnessML Master Thesis project.
+
+The goal is to keep all notebooks consistent, reproducible and easy to maintain.
 
 ---
 
-# Standard notebook structure
+# Standard Notebook Structure
 
-## 1. Notebook title
+Each notebook should follow the same general organization.
 
-Markdown heading with a short description of the notebook purpose.
+---
+
+# 1. Notebook title
+
+Every notebook starts with a clear Markdown title describing its purpose.
 
 Example:
 
+```markdown
 # 03. Data Preprocessing
+
+Description of notebook purpose.
+```
 
 ---
 
-## 2. Import libraries
+# 2. Import libraries
+
+Standard Python imports.
+
+Example:
 
 ```python
 import os
 import sys
 import importlib
-...
+
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
----
-
-## 3. Connect Google Drive
-
-```python
-drive.mount(...)
-```
-
----
-
-## 4. Connect project
-
-```python
-PROJECT_DIR = ...
-```
-
----
-
-## 5. Import project modules
+Project-specific imports:
 
 ```python
 import config
 import utils
 ```
 
-Always reload modules:
+---
+
+# 3. Reload project modules
+
+During development, always reload local modules.
+
+Example:
 
 ```python
 config = importlib.reload(config)
 utils = importlib.reload(utils)
 ```
 
+This ensures that changes in project files are applied without restarting the notebook.
+
 ---
 
-## 6. Load dataset
+# 4. Connect Google Drive (if required)
+
+For Google Colab notebooks:
+
+```python
+from google.colab import drive
+
+drive.mount("/content/drive")
+```
+
+---
+
+# 5. Configure project paths
+
+Use centralized configuration.
+
+Example:
+
+```python
+PROJECT_DIR = config.PROJECT_DIR
+DATA_DIR = config.DATA_DIR
+RESULTS_DIR = config.RESULTS_DIR
+```
+
+Avoid hardcoding paths inside notebooks.
+
+---
+
+# 6. Load data
+
+Datasets should be loaded through project utilities whenever possible.
+
+Example:
 
 ```python
 df = utils.load_dataset()
 ```
 
-If necessary:
+Additional preparation:
 
 ```python
 utils.set_plot_style()
@@ -73,59 +114,142 @@ utils.set_plot_style()
 
 ---
 
-## 7. Main notebook sections
+# 7. Notebook sections
 
-Each major step should begin with
+Each major logical block should start with:
 
 ```python
 utils.section("Section title")
 ```
 
-Examples:
+Recommended sections:
 
-- Dataset
-- Data Quality
+- Dataset Overview
+- Data Quality Analysis
 - Exploratory Data Analysis
+- Data Preparation
 - Feature Engineering
 - Model Training
-- Evaluation
+- Model Evaluation
+- Results Analysis
 
 ---
 
-## 8. Save generated results
+# 8. Results generation
 
-Figures:
+All generated artifacts should be saved using project utilities.
 
-```python
-utils.save_figure(...)
-```
-
-Tables:
+## Figures
 
 ```python
-utils.save_table(...)
-```
-
-Reports:
-
-```python
-utils.save_report(...)
+utils.save_figure(
+    fig,
+    "figure_name"
+)
 ```
 
 ---
 
-## 9. Finish notebook
+## Tables
+
+```python
+utils.save_table(
+    dataframe,
+    "table_name"
+)
+```
+
+---
+
+## Reports
+
+```python
+utils.save_report(
+    content,
+    "report_name"
+)
+```
+
+---
+
+# 9. Machine Learning notebooks
+
+Modeling notebooks should additionally contain:
+
+## Dataset definition
+
+- input features;
+- target variable;
+- train/test split strategy.
+
+---
+
+## Model configuration
+
+Document:
+
+- algorithm;
+- parameters;
+- random seed;
+- evaluation metrics.
+
+Example:
+
+```python
+MODEL_NAME = "Random Forest"
+
+RANDOM_STATE = 42
+```
+
+---
+
+## Training
+
+Training code should be separated from evaluation.
+
+Example:
+
+```python
+model.fit(
+    X_train,
+    y_train
+)
+```
+
+---
+
+## Evaluation
+
+Always include:
+
+- selected metrics;
+- comparison tables;
+- visual analysis;
+- saved results.
+
+---
+
+# 10. Final notebook section
+
+Every notebook should end with:
 
 ```python
 utils.section("Notebook completed")
 ```
 
+Optional:
+
+```python
+print("Notebook completed successfully.")
+```
+
 ---
 
-# Naming convention
+# Naming Convention
 
-Notebook names:
+Notebook names follow the project pipeline order:
 
+```
 00_project_setup
 
 01_dataset_audit
@@ -134,6 +258,108 @@ Notebook names:
 
 03_preprocessing
 
-...
+04_feature_engineering
 
-One notebook = one logical stage of the ML pipeline.
+05_modeling
+
+06_evaluation
+```
+
+Additional application notebooks:
+
+```
+0014_VOILA
+
+0015_VOILA_Launcher
+```
+
+---
+
+# Notebook Principles
+
+## One notebook = one logical stage
+
+Avoid mixing unrelated tasks.
+
+Example:
+
+Good:
+
+```
+05_modeling
+    - train models
+    - compare models
+```
+
+Bad:
+
+```
+05_everything
+    - preprocessing
+    - training
+    - visualization
+    - final app
+```
+
+---
+
+## Reproducibility
+
+Every notebook should:
+
+- use project configuration;
+- avoid hidden state;
+- save important outputs;
+- document important decisions.
+
+---
+
+## Research Traceability
+
+Each notebook should make clear:
+
+- what was done;
+- why it was done;
+- what result was obtained;
+- where the result was saved.
+
+---
+
+# Current Project Pipeline
+
+```
+config.py
+        │
+        ▼
+utils.py
+        │
+        ▼
+00_project_setup
+        │
+        ▼
+01_dataset_audit
+        │
+        ▼
+02_eda
+        │
+        ▼
+03_preprocessing
+        │
+        ▼
+04_feature_engineering
+        │
+        ▼
+05_modeling
+        │
+        ▼
+06_evaluation
+        │
+        ▼
+Final Model
+        │
+        ▼
+Explainable AI
+        │
+        ▼
+Voilà Application
+```
