@@ -1,0 +1,26 @@
+{
+  "notebook": "0011",
+  "features": 65,
+  "observations": 680,
+  "folds": [
+    {
+      "fold": 1,
+      "train": 256,
+      "test": 154
+    },
+    {
+      "fold": 2,
+      "train": 410,
+      "test": 145
+    },
+    {
+      "fold": 3,
+      "train": 555,
+      "test": 125
+    }
+  ],
+  "boosting_model": "XGBoost",
+  "personalization": "target deviation from user training baseline",
+  "calories_history_group_size": 9,
+  "features_without_calories_history": 56
+}
