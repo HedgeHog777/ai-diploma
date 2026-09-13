@@ -3,80 +3,70 @@
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange)
 ![SHAP](https://img.shields.io/badge/Explainable%20AI-SHAP-purple)
 ![Voilà](https://img.shields.io/badge/Interactive%20Dashboard-Voilà-green)
-![GitHub](https://img.shields.io/badge/Version%20Control-Git-black)
+![Git](https://img.shields.io/badge/Version%20Control-Git-black)
 ![Status](https://img.shields.io/badge/Status-Final%20Development-brightgreen)
 
 # 🧠 FitnessML Master Thesis
 
-Machine Learning system for forecasting daily energy expenditure using fitness tracker data.
+Machine Learning project developed as part of a Master's degree thesis.
 
-This repository contains the implementation of a complete end-to-end machine learning pipeline developed as part of a Master's degree thesis in Artificial Intelligence / Machine Learning.
+This repository contains the final implementation of a machine learning system for forecasting daily energy expenditure using fitness tracker data.
 
-The project focuses on analyzing physiological and behavioral data collected from wearable fitness trackers and developing a predictive system capable of forecasting next-day energy expenditure.
+The project focuses on developing a complete pipeline from processed fitness data to an interactive prediction dashboard with explainable AI capabilities.
 
 ---
 
 # 📌 Project Overview
 
-The project includes:
-
-- dataset analysis and validation;
-- exploratory data analysis (EDA);
-- data preprocessing;
-- temporal feature engineering;
-- machine learning model development;
-- model comparison and evaluation;
-- final model selection;
-- explainable AI analysis;
-- interactive prediction dashboard.
-
-The final prediction task:
-
-**Forecasting next-day energy expenditure**
-
-Target variable:
+The main objective of the project is to create a predictive model capable of forecasting:
 
 ```
 target_calories_next_day
 ```
 
-The system uses historical activity, physiological and behavioral characteristics to estimate future energy expenditure.
+using historical fitness tracker information and engineered behavioral features.
+
+The final system includes:
+
+- data processing;
+- feature engineering;
+- machine learning modeling;
+- model evaluation;
+- final model selection;
+- prediction generation;
+- explainable AI analysis;
+- interactive dashboard deployment.
 
 ---
 
-# 🏗️ Machine Learning Pipeline
+# 🏗️ Final System Architecture
 
 ```
-Fitness Tracker Dataset
-            │
-            ▼
-Dataset Validation
-            │
-            ▼
-Exploratory Data Analysis
-            │
-            ▼
-Data Preprocessing
-            │
-            ▼
+Fitness Tracker Data
+          │
+          ▼
+Data Processing
+          │
+          ▼
 Feature Engineering
-            │
-            ▼
+          │
+          ▼
 Machine Learning Models
-            │
-            ▼
-Model Evaluation & Comparison
-            │
-            ▼
-Final Selected Model
-(Random Forest Regressor)
-            │
-            ▼
-Explainable AI
-(SHAP Analysis)
-            │
-            ▼
-Interactive Voilà Dashboard
+          │
+          ▼
+Model Evaluation
+          │
+          ▼
+Final Random Forest Model
+          │
+          ▼
+Prediction Engine
+          │
+          ▼
+SHAP Explainability
+          │
+          ▼
+Voilà Interactive Dashboard
 ```
 
 ---
@@ -85,96 +75,62 @@ Interactive Voilà Dashboard
 
 ```
 FitnessML_Master/
-│
-├── README.md
-├── config.py
-├── utils.py
+
 │
 ├── notebooks/
-│   │
-│   ├── 00_project_setup.ipynb
-│   ├── 01_dataset_audit.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_preprocessing.ipynb
-│   ├── 04_feature_engineering.ipynb
-│   ├── 05_model_training.ipynb
-│   ├── 06_model_evaluation.ipynb
-│   ├── 07_interpretability.ipynb
-│   │
-│   ├── 0014_VOILA.ipynb
-│   └── 0015x_VOILA_Launcher.ipynb
 │
-├── data/
-│   ├── raw/
-│   └── processed/
+│   ├── 0014_VOILA.ipynb
+│   │       Final interactive dashboard application
+│   │
+│   └── 0015x_VOILA_Launcher.ipynb
+│           Voilà runtime launcher
 │
 ├── results/
 │
 │   └── 009_final_results/
-│       │
+│
 │       ├── random_forest_final.pkl
+│       │       Final trained Random Forest model
+│       │
 │       ├── prediction_results.csv
+│       │       Generated predictions
+│       │
 │       ├── fitbit_modeling_features.csv
+│       │       Final modeling dataset
+│       │
 │       ├── model_metadata.json
+│       │       Model configuration and metadata
+│       │
 │       └── ui_config.json
+│               Dashboard configuration
 │
-├── figures/
-│
-├── tables/
-│
-├── reports/
-│
-└── thesis/
+├── README.md
 ```
 
 ---
 
-# 📊 Dataset
+# 🤖 Machine Learning Model
 
-Dataset:
+## Final Model
 
-**Health Fitness Tracking – 365 Days**
+The selected final model is:
 
-Main characteristics:
+**Random Forest Regressor**
 
-- approximately 365,000 observations;
-- 1,000 users;
-- 365 consecutive days;
-- activity measurements;
-- physiological parameters;
-- behavioral indicators;
-- daily fitness tracker statistics.
+The model predicts:
 
-The dataset represents longitudinal user activity patterns suitable for time-dependent prediction tasks.
+```
+target_calories_next_day
+```
 
----
+The final model:
 
-# 🤖 Machine Learning Models
+- uses engineered fitness features;
+- contains the final trained parameters;
+- supports individual predictions;
+- is integrated into the dashboard application.
 
-The project explores different machine learning approaches:
-
-- classical regression algorithms;
-- ensemble learning methods;
-- neural network experiments;
-- model comparison;
-- feature importance analysis.
-
----
-
-# 🏆 Final Model
-
-Selected final model:
-
-## Random Forest Regressor
-
-Final model properties:
-
-- trained using engineered temporal features;
-- uses 65 final input features;
-- exported as a production-ready model;
-- integrated into the prediction dashboard.
-
-Stored model:
+Model artifact:
 
 ```
 results/009_final_results/random_forest_final.pkl
@@ -182,59 +138,71 @@ results/009_final_results/random_forest_final.pkl
 
 ---
 
-# 🔍 Explainable Artificial Intelligence
+# 📊 Prediction System
 
-The project includes model interpretation using:
+The prediction system allows:
 
-## SHAP
+- selecting a user;
+- selecting a prediction date;
+- generating next-day energy expenditure forecasts;
+- viewing historical information;
+- analysing prediction results.
 
-Implemented techniques:
+Generated results are stored in:
 
-- SHAP TreeExplainer;
+```
+results/009_final_results/prediction_results.csv
+```
+
+---
+
+# 🔍 Explainable AI
+
+To improve transparency and interpretability, the project includes:
+
+## SHAP (SHapley Additive exPlanations)
+
+Implemented functionality:
+
 - feature contribution analysis;
-- global feature importance;
-- individual prediction explanation.
+- individual prediction explanation;
+- model behaviour interpretation;
+- importance ranking.
 
-The goal is not only accurate forecasting but also understanding which factors influence the model decisions.
+SHAP explanations are integrated into the interactive dashboard.
 
 ---
 
 # 🖥️ Interactive Dashboard
 
-The project contains an interactive Voilà application.
+The project includes a web-based interactive dashboard built with:
 
-The dashboard provides:
+- Voilà;
+- Jupyter Widgets;
+- ipywidgets.
+
+Dashboard functionality:
 
 - user selection;
 - date selection;
 - prediction generation;
-- forecast visualization;
-- historical user analysis;
-- SHAP explanation;
-- validation/demo functionality.
+- result visualization;
+- historical analysis;
+- SHAP explanations.
 
-Architecture:
+Application notebooks:
 
 ```
 0014_VOILA.ipynb
-        │
-        ▼
-Dashboard Application
-        │
-        ▼
-0015x_VOILA_Launcher.ipynb
-        │
-        ▼
-Voilà Server
 ```
 
-Launch notebook:
+and
 
 ```
 0015x_VOILA_Launcher.ipynb
 ```
 
-The launcher prepares the environment and starts the interactive application.
+The launcher prepares the runtime environment and starts the Voilà application.
 
 ---
 
@@ -254,22 +222,20 @@ The launcher prepares the environment and starts the interactive application.
 ## Machine Learning
 
 - Scikit-learn
-- Random Forest
-- Regression models
+
+## Explainable AI
+
+- SHAP
 
 ## Visualization
 
 - Matplotlib
 - Seaborn
 
-## Explainability
-
-- SHAP
-
 ## Interactive Application
 
-- ipywidgets
 - Voilà
+- ipywidgets
 
 ## Version Control
 
@@ -278,27 +244,43 @@ The launcher prepares the environment and starts the interactive application.
 
 ---
 
+# 🚀 Running the Dashboard
+
+The dashboard is designed to run inside Google Colab.
+
+Start the application using:
+
+```
+0015x_VOILA_Launcher.ipynb
+```
+
+The launcher:
+
+1. mounts project storage;
+2. prepares the Voilà environment;
+3. loads the final dashboard notebook;
+4. starts the interactive application.
+
+---
+
 # 📈 Project Status
 
 Completed:
 
-✅ Project structure  
-✅ Dataset audit  
-✅ Data validation  
-✅ Data preprocessing  
+✅ Data processing pipeline  
 ✅ Feature engineering  
 ✅ Machine learning experiments  
-✅ Model comparison  
+✅ Model evaluation  
 ✅ Final model selection  
-✅ SHAP interpretation  
-✅ Prediction dashboard  
-✅ Final result export  
+✅ Prediction system  
+✅ SHAP explainability  
+✅ Interactive dashboard  
 
 Current work:
 
-🔄 Thesis documentation  
+🔄 Master's thesis documentation  
 🔄 Final figures and tables  
-🔄 Academic presentation materials  
+🔄 Presentation materials  
 
 ---
 
@@ -312,7 +294,7 @@ Field:
 
 Research direction:
 
-**Predictive modeling of physiological and behavioral patterns using wearable fitness tracker data**
+**Predictive modeling of fitness tracker data using machine learning methods**
 
 ---
 
@@ -320,6 +302,6 @@ Research direction:
 
 **Oles Nabok**
 
-Master's Degree Project
+Master's Degree Thesis
 
 Artificial Intelligence / Machine Learning
